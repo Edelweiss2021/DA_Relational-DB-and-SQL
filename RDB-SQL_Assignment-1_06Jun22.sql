@@ -24,6 +24,9 @@ Do the following exercises, using the data model.
 
 */
 
+-- create database
+CREATE DATABASE Manufacturer;
+
 USE Manufacturer;
 
 -- create schemas
