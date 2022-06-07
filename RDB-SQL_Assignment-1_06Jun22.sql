@@ -50,7 +50,7 @@ CREATE TABLE product.product (
 CREATE TABLE component.component (
 	comp_id INT IDENTITY (1, 1) PRIMARY KEY,
 	comp_name VARCHAR (50) NOT NULL,
-	description VARCHAR (50) NOT NULL,
+	[description] VARCHAR (50) NOT NULL,
 	quantity_comp INT NOT NULL
 	);
 	   
@@ -66,6 +66,7 @@ CREATE TABLE product.component (
 	prod_id INT NOT NULL,
 	comp_id INT NOT NULL,
 	quantity_comp INT NOT NULL,
+	PRIMARY KEY (prod_id, comp_id),
 	FOREIGN KEY (prod_id) REFERENCES product.product (prod_id) ON DELETE CASCADE ON UPDATE CASCADE,
 	FOREIGN KEY (comp_id) REFERENCES component.component (comp_id) ON DELETE CASCADE ON UPDATE CASCADE
 );
@@ -75,6 +76,7 @@ CREATE TABLE component.supplier (
 	comp_id INT NOT NULL,
 	order_date DATE NOT NULL,
 	quantity INT NOT NULL,
+	PRIMARY KEY (supp_id, comp_id),
 	FOREIGN KEY (supp_id) REFERENCES supplier.supplier (supp_id) ON DELETE CASCADE ON UPDATE CASCADE,
 	FOREIGN KEY (comp_id) REFERENCES component.component (comp_id) ON DELETE CASCADE ON UPDATE CASCADE
 );
